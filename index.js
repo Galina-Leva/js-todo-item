@@ -49,12 +49,6 @@ const createTaskItem = (taskId, taskText) => {
     return taskItem;
 }
 
-// const firstNavButton = document.querySelector('.main-navigation__button-item');
-// firstNavButton.addEventListener('click', (event) => {
-//     console.log(event.target);
-//     const {target} =event;
-//     target.classList.add('main-navigation__button-item_selected')
-// });
 
 const allNavButtons = document.querySelectorAll('.main-navigation__button-item')
  allNavButtons.forEach((button) => {
