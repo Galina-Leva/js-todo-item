@@ -8,6 +8,7 @@ const tasks = [
         {"id":"7","text":"Sleep","completed":true}
 ]
 
+
 const createTaskItem = (taskId, taskText) => {
     const taskItem = document.createElement('div');
     taskItem.className = 'task-item';
@@ -30,6 +31,41 @@ const createTaskItem = (taskId, taskText) => {
     inputCheckbox.className = 'checkbox-form__checkbox';
     const inputId = `task-${taskId}`;
     inputCheckbox.id = inputId;
+
+
+    const createTooltip = (text) => {
+        const tooltip = document.createElement('span');
+        tooltip.textContent = text;
+        tooltip.className = 'tooltip';
+    
+        return tooltip;
+    }
+    
+    document.addEventListener('mouseover', (event) => {
+        const { target } = event;
+        const isOverDeleteButton = target.className.includes('task-item__delete-button');
+        if (isOverDeleteButton) {
+            console.log('success');
+            const taskItemHTML = target.closest('.task-item');
+            const taskId = taskItemHTML?.dataset.taskId;
+            if (taskId) {
+              const tooltipHTML = createTooltip(`Удалить задачу ${taskId}?`);
+              target.append(tooltipHTML);
+            }
+        }
+    });
+
+    document.addEventListener('mouseout', (event) => {
+        const { target } = event;
+        const isOutFromDeleteButton = target.className.includes('task-item__delete-button');
+        if (isOutFromDeleteButton) {
+            const tooltip = document.querySelector('.tooltip');
+            if (tooltip) {
+                tooltip.remove();
+            }
+        }
+    });
+    
 
     const labelCheckbox = document.createElement('label');
     labelCheckbox.htmlFor = inputId;
