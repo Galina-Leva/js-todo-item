@@ -1,11 +1,11 @@
 const tasks = [
-    {"id":"1","text":"Wake up","completed":true},
-        {"id":"2","text":"To drink coffee","completed":false},
-        {"id":"3","text":"Smoke","completed":true},
-        {"id":"4","text":"Eat","completed":false},
-        {"id":"5","text":"Work","completed":false},
-        {"id":"6","text":"Relax","completed":true},
-        {"id":"7","text":"Sleep","completed":true}
+    {"id":"1","text":"Душ","completed":true},
+        {"id":"2","text":"Кофе","completed":false},
+        {"id":"3","text":"Зарядка","completed":true},
+        {"id":"4","text":"Завтрак","completed":false},
+        {"id":"5","text":"Работа","completed":false},
+        {"id":"6","text":"Сериал","completed":true},
+        {"id":"7","text":"Сон","completed":true}
 ]
 
 
@@ -65,7 +65,38 @@ const createTaskItem = (taskId, taskText) => {
             }
         }
     });
+
+
+    // Меняет название кнопки
+//     document.querySelectorAll("button").forEach(function(el){
+//         el.addEventListener("click",function(){
+//         if(!this.dataset.secondname)
+//           return;
+//          var tmp = this.innerHTML;
+//          this.innerHTML = this.dataset.secondname;
+//          this.dataset.secondname = tmp;
+//       },false)
+//   })
     
+
+
+//   btn.addEventListener("mouseover", function() {
+//     this.value = "Нажми";
+//   })
+  
+//   btn.addEventListener("mouseout", function() {
+//     this.value = "Создать";
+//   });
+
+[...document.querySelectorAll('[data-toggle]')].forEach(function(e) { 
+    e.addEventListener('click', function(e) { 
+      let toggle = e.target.getAttribute('data-toggle'); 
+      e.target.setAttribute('data-toggle', e.target.innerText.trim());
+      e.target.innerText = toggle; 
+    });
+  });
+
+
 
     const labelCheckbox = document.createElement('label');
     labelCheckbox.htmlFor = inputId;
